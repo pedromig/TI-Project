@@ -23,8 +23,28 @@ e3 = entropy(audio);
 e4 = entropy(MRI);
 e5 = entropy(MRIbin);
 
+%#### Entropy Display ####
+
+fprintf("########### ENTROPIES ##########\n\n");
 fprintf("Landscape Entropy :  %f\n",e1);
 fprintf("Text Entropy :  %f\n",e2);
 fprintf("Audio Entropy: %f\n",e3);
 fprintf("MRI Entropy: %f\n",e4);
-fprintf("MRIbin Entropy: %f\n",e5);
+fprintf("MRIbin Entropy: %f\n\n",e5);
+
+%#### Number of bits using Huffman ####
+hl1 = avgNumBits(landscape);
+hl2 = avgNumBits(lyrics);
+hl3 = avgNumBits(audio);
+hl4 = avgNumBits(MRI);
+hl5 = avgNumBits(MRIbin);
+
+%####  Number of bits using Huffman display ####
+
+fprintf("\n######## Average number of bits using Huffman codes #########\n\n")
+fprintf("Landscape average number of bits using Huffman codes :  %f\n",hl1);
+fprintf("Text average number of bits using Huffman codes :  %f\n",hl2);
+fprintf("Audio average number of bits using Huffman codes %f\n",hl3);
+fprintf("MRI average number of bits using Huffman codes: %f\n",hl4);
+fprintf("MRIbin average number of bits using Huffman codes: %f\n\n",hl5);
+
