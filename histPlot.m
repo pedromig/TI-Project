@@ -41,7 +41,8 @@ function h = histPlot(file, alpha)
             data = categorical(src, alpha); 
             h = histogram(data);
 
-            xticklabels(chars);             
+            xticklabels(chars); 
+            xtickangle(0);          
         case "image"
 
             data = categorical(src, alpha);

@@ -1,15 +1,18 @@
-function avg =  avgNumBits(f,alfa)
+function avg =  avgNumBits(file,alpha)
+        
+    [src,~,type] = getSource(file);
     
     if(nargin < 2)
-        alfa = unique(f);
-        alfa = double(alfa);
+       alpha = getAlphabet(file,type,file);
     end  
-    f = double(f);
     
-    temp = categorical(f, alfa);
-    frequencias = histcounts(temp);
+    alpha = double(alpha);
+    src = double(src);
+    
+    data = categorical(src, alpha);
+    frequencias = histcounts(data);
     
     bits = hufflen(frequencias);
     avg = sum(bits) / size(bits, 2);
     
-end
+end   

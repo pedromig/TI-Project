@@ -29,8 +29,7 @@ function e = entropy(file,alpha)
     data = categorical(src, alpha);
     freq = histcounts(data);
     
-    numero_de_amostras = size(src,1) * size(src,2);
-    prob = freq / numero_de_amostras;
+    prob = freq / sum(freq);
     
     e = -prob(prob ~= 0) * log2(prob(prob ~= 0)');
     
