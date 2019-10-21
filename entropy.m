@@ -28,9 +28,9 @@ function e = entropy(file,alpha)
    
     data = categorical(src, alpha);
     freq = histcounts(data);
-    
+
     prob = freq / sum(freq);
-    
+
     e = -prob(prob ~= 0) * log2(prob(prob ~= 0)');
     
 end
