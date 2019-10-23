@@ -1,4 +1,4 @@
-function e = entropy(file,alpha)
+function e = entropy(file,alpha,varargin)
 
   %===========================================================================================
   % Name:  entropy
@@ -17,20 +17,26 @@ function e = entropy(file,alpha)
   %===========================================================================================
 
    [src,~,type] = getSource(file);
-   
-   % Detects if alphabet was provided and builds one if its not the case 
-   if(nargin < 2)
-         alpha = getAlphabet(src,type,file);
-   end
+    grouping = 1;
+    if (nargin <= 2)
+        
+      if (nargin == 1 || alpha == "group")
+            alpha = getAlphabet(src,type,file);
+      end
+      src = double(src); 
+      alpha = double(alpha);
+           
+     else
+        grouping = cell2mat(varargin(1));
+        src = double(src);
+    	 [src,alpha] = createGroupings(src,type,grouping);    
+    end
 
-   src = double(src);   
-   alpha = double(alpha);
-   
     data = categorical(src, alpha);
     freq = histcounts(data);
 
     prob = freq / sum(freq);
 
-    e = -prob(prob ~= 0) * log2(prob(prob ~= 0)');
+    e = (-prob(prob ~= 0) * log2(prob(prob ~= 0)')) / grouping;
     
 end

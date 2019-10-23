@@ -1,4 +1,4 @@
-function h = histPlot(file, alpha)
+function h = histPlot(file,alpha,varargin)
     %================================================================================
     % Name:  histPlot
     %
@@ -21,43 +21,41 @@ function h = histPlot(file, alpha)
     %================================================================================
 
     [src,name,type] = getSource(file);
+    grouping = 1;
 
-    % Detects if alphabet was provided and builds one if its not the case
-    if(nargin < 2)
-        alpha = getAlphabet(src,type,file);
+    if (nargin <= 2)
+
+        if (nargin == 1 || alpha == "group")
+            alpha = getAlphabet(src,type,file);
+        end
+
+	    alpha = double(alpha);
+	    src = double(src);
+           
+    else
+
+        grouping = cell2mat(varargin(1));
+        src = double(src);
+
+    	[src,alpha] = createGroupings(src,type,grouping);
+        
     end
-    
-    alpha = double(alpha);
-    src = double(src);
-    
+
     switch type
         case "text"
-            
-            chars = cell(1,size(alpha,2)); 
-            for i = 1 : size(alpha,2)
-                chars(1, i) = {char(alpha(1, i))};
-            end
-            
-            data = categorical(src, alpha); 
-            h = histogram(data);
+            chars = getTextCharLabels(alpha,grouping);   
 
-            xticklabels(chars); 
-            xtickangle(0);          
-        case "image"
-
-            data = categorical(src, alpha);
-            h = histogram(data);      
-               
-        case "audio"
             data = categorical(src,alpha);
             h = histogram(data);
 
-        otherwise 
-            h = -1;
-            disp("ERROR");
+            xticklabels(chars); 
+            xtickangle(0);
+        otherwise
+               data = categorical(src,alpha);
+               h = histogram(data);
     end
-    
-    % Adjusts Histogram properties
+
+
     histProperties(name,"Alphabet","Frequency")   
 end
 
@@ -66,4 +64,18 @@ function histProperties(name,xLabel,yLabel)
     title(name);
     xlabel(xLabel);
     ylabel(yLabel);
+end
+
+function chars = getTextCharLabels(alpha,grouping)
+
+    if (grouping == 1)
+        chars = cell(1,size(alpha,2)); 
+        for i = 1 : size(alpha,2)
+            chars(1, i) = {char(alpha(1, i))};
+        end
+    else
+        % Text labels ( fixme -> mega função do gabriel!)
+        chars = double(alpha);
+    end
+
 end

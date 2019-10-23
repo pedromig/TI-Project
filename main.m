@@ -6,6 +6,7 @@ MRI =  "/home/pedro/Documents/MATLAB/PL1/data/MRI.bmp";
 MRIbin =  "/home/pedro/Documents/MATLAB/PL1/data/MRIbin.bmp";
 
 % #### Histograms ####
+figure(1);
 h1 = histPlot(lyrics);
 figure(2);
 h2 = histPlot(landscape);
@@ -25,7 +26,7 @@ e5 = entropy(MRIbin);
 
 %#### Entropy Display ####
 
-fprintf("########### ENTROPIES ##########\n\n");
+fprintf("########### Entropies ##########\n\n");
 fprintf("Landscape Entropy :  %f\n",e1);
 fprintf("Text Entropy :  %f\n",e2);
 fprintf("Audio Entropy: %f\n",e3);
@@ -48,3 +49,31 @@ fprintf("Audio average number of bits using Huffman codes %f\n",hl3);
 fprintf("MRI average number of bits using Huffman codes: %f\n",hl4);
 fprintf("MRIbin average number of bits using Huffman codes: %f\n\n",hl5);
 
+% #### Histograms with grouping ####
+var = 2;
+figure(6);
+hg1 = histPlot(lyrics,"group",var);
+figure(7);
+hg2 = histPlot(landscape,"group",var);
+figure(8);
+hg3 = histPlot(audio,"group",var);
+figure(9);
+hg4 = histPlot(MRI,"group",var);
+figure(10)
+hg5 = histPlot(MRIbin,"group",var);
+
+% #### Entropy with grouping####
+e1 = entropy(landscape,"group",var);
+e2 = entropy(lyrics,"group",var);
+e3 = entropy(audio,"group",var);
+e4 = entropy(MRI,"group",var);
+e5 = entropy(MRIbin,"group",var);
+
+%#### Entropy Display with grouping ####
+
+fprintf("########### Entropies with grouping ##########\n\n");
+fprintf("Landscape Entropy :  %f\n",e1);
+fprintf("Text Entropy :  %f\n",e2);
+fprintf("Audio Entropy: %f\n",e3);
+fprintf("MRI Entropy: %f\n",e4);
+fprintf("MRIbin Entropy: %f\n\n",e5);
