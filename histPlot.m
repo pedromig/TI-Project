@@ -74,8 +74,10 @@ function chars = getTextCharLabels(alpha,grouping)
             chars(1, i) = {char(alpha(1, i))};
         end
     else
-        % Text labels ( fixme -> mega função do gabriel!)
-        chars = double(alpha);
+         chars = strings(1, size(alpha,2));
+         for i = 1 : size(alpha, 2)
+                chars(1, i) = strcat( char(bitsrl(fi(bitand(alpha(1, i), 65280)), 8)), char(bitand(alpha(1, i), 255)));
+         end
     end
 
 end
