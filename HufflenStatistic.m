@@ -15,7 +15,7 @@ function [avg,var] =  HufflenStatistic(file,alpha)
     Hlen = hufflen(freq);
     
     avg = Hlen * prob';
-    avg_squared = pow2(Hlen);
-    var = avg_squared - pow2(avg);
-    
+    avg_squared =  (Hlen.^2) * prob';
+    var = (avg_squared - avg^2);
+
 end   

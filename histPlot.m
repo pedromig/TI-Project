@@ -51,22 +51,17 @@ function h = histPlot(file,alpha,varargin)
             xticklabels(chars); 
             xtickangle(0);
         case "image"
-            if( grouping == 1)
-                
-                data = categorical(src,alpha);
-                h = histogram(data);
-                if( length(alpha) ~= 2)
-                    xticks(categorical(alpha(1: 50: length(alpha))));
-               end
-
-            end           
-        case "audio"
-            if( grouping == 1)
-                data = categorical(src,alpha);
-               	h = histogram(data);
-               
-               xticks(categorical(alpha(1: 5 : length(alpha))));
+       
+            data = categorical(src,alpha);
+            h = histogram(data);
+            if( length(alpha) ~= 2)
+                xticks(categorical(alpha(1: 50: length(alpha))));
             end
+        case "audio"
+            data = categorical(src,alpha);
+            h = histogram(data);
+
+           xticks(categorical(alpha(1: 5 : length(alpha))));
             
         otherwise
                h = -1;
@@ -84,14 +79,13 @@ function histProperties(name,xLabel,yLabel)
     ylabel(yLabel);
 end
 
-function [xaxis,yaxis] = getTextCharLabels(alpha,grouping)
+function chars = getTextCharLabels(alpha,grouping)
 
     if (grouping == 1)
-        xaxis = cell(1,size(alpha,2)); 
+        chars = cell(1,size(alpha,2)); 
         for i = 1 : size(alpha,2)
-            xaxis(1, i) = {char(alpha(1, i))};
+            chars(1, i) = {char(alpha(1, i))};
         end
-        yaxis = 0;
     else
         chars = strings(1, size(alpha,2));
          for i = 1 : size(alpha, 2)
