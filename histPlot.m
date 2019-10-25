@@ -50,18 +50,29 @@ function h = histPlot(file,alpha,varargin)
 
             xticklabels(chars); 
             xtickangle(0);
+         
         case "image"
        
             data = categorical(src,alpha);
             h = histogram(data);
-            if( length(alpha) ~= 2)
+           if ( length(alpha) ~= 2 && length(alpha) ~= 4)
                 xticks(categorical(alpha(1: 50: length(alpha))));
-            end
-        case "audio"
+           elseif ( grouping == 2)
+                xticklabels('auto');
+           else
+                    %xticks(categorical(getCharLabelsMRIBin(alpha);
+           end
+            
+         case "audio"
             data = categorical(src,alpha);
             h = histogram(data);
-
-           xticks(categorical(alpha(1: 5 : length(alpha))));
+            
+            if ( grouping == 2)
+                xticks('auto');
+                xticklabels('auto');
+            else
+                xticks(categorical(alpha(1: 5 : length(alpha))));
+            end
             
         otherwise
                h = -1;
@@ -92,5 +103,11 @@ function chars = getTextCharLabels(alpha,grouping)
                 chars(1, i) = strcat( char(bitsrl(fi(bitand(alpha(1, i), 65280)), 8)), char(bitand(alpha(1, i), 255)));
          end
     end
+end
 
+function chars = getCharLabelsMRIBin(alpha)
+        chars = strings(1, size(alpha,2));
+         for i = 1 : size(alpha, 2)
+                chars(1, i) = strcat( char(bitsrl(bitand(alpha(1, i), 65280)),1), char(bitand(alpha(1, i), 255)));
+         end
 end
