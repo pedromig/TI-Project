@@ -1,16 +1,28 @@
 % CHANGE THE PATHS!!!!
+%###################################################################################
 landscape  = "/home/pedro/Documents/MATLAB/PL1/data/landscape.bmp";
 lyrics = "/home/pedro/Documents/MATLAB/PL1/data/lyrics.txt";
 audio = "/home/pedro/Documents/MATLAB/PL1/data/soundMono.wav";
 MRI =  "/home/pedro/Documents/MATLAB/PL1/data/MRI.bmp";
 MRIbin =  "/home/pedro/Documents/MATLAB/PL1/data/MRIbin.bmp";
-
+%###################################################################################
+query = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/query.bmp";
+%###################################################################################
+target1 = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target1.bmp";
+target2 = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target2.bmp";
+target3 = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target3.bmp";
+target4 = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target4.bmp";
+%###################################################################################
+target_inverted = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target_inverted.bmp";
+target_lightning_contrast= "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target_lightning_contrast.bmp";
+target3_noise = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target_noise.bmp";
+target4_original =  "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target_original.bmp";
+%###################################################################################
 
 %Clear the console
 clc 
 
 % #### Histograms ####
-
 figure(1);
 h1 = histPlot(lyrics);
 figure(2);
@@ -22,7 +34,6 @@ h4 = histPlot(MRI);
 figure(5)
 h5 = histPlot(MRIbin);
 
-
 % #### Entropy ####
 e1 = entropy(landscape);
 e2 = entropy(lyrics);
@@ -31,7 +42,6 @@ e4 = entropy(MRI);
 e5 = entropy(MRIbin);
 
 %#### Entropy Display ####
-
 fprintf("########### Entropies ##########\n\n");
 fprintf("Landscape Entropy :  %f\n",e1);
 fprintf("Text Entropy :  %f\n",e2);
@@ -40,7 +50,6 @@ fprintf("MRI Entropy: %f\n",e4);
 fprintf("MRIbin Entropy: %f\n\n",e5);
 
 %#### Average Number of bits using Huffman and variance ####
-
 [hl1,var1] = HufflenStatistic(landscape);
 [hl2,var2] = HufflenStatistic(lyrics);
 [hl3,var3] = HufflenStatistic(audio);
@@ -48,7 +57,6 @@ fprintf("MRIbin Entropy: %f\n\n",e5);
 [hl5,var5] = HufflenStatistic(MRIbin);
 
 %#### Average Number of bits using Huffman and variance display ####
-
 fprintf("\n######## Average number of bits using Huffman codes #########\n\n")
 fprintf("Landscape average number of bits using Huffman codes :  %f\n",hl1);
 fprintf("Text average number of bits using Huffman codes :  %f\n",hl2);
@@ -64,7 +72,6 @@ fprintf("MRIvariance of the number of bits using Huffman codes : %f\n ",var4);
 fprintf("MRIbin variance of the number of bits using Huffman codes : %f\n ",var5);
 
 % #### Histograms with grouping ####
-
 var = 2;
 figure(6);
 hg1 = histPlot(lyrics,"group",var);
@@ -85,7 +92,6 @@ e4 = entropy(MRI,"group",var);
 e5 = entropy(MRIbin,"group",var);
 
 %#### Entropy Display with grouping ####
-
 fprintf("\n########### Entropies with grouping ##########\n\n");
 fprintf("Landscape Entropy :  %f\n",e1);
 fprintf("Text Entropy :  %f\n",e2);

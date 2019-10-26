@@ -1,4 +1,4 @@
-function e = entropy(file,alpha,varargin)
+function e = entropy(source,alpha,varargin)
 
   %===========================================================================================
   % Name:  entropy
@@ -16,12 +16,19 @@ function e = entropy(file,alpha,varargin)
   %                   # e -> The numeric value for the entropy of the source
   %===========================================================================================
 
-   [src,~,type] = getSource(file);
-    grouping = 1;
+  grouping = 1;
+  if (class(source) ~= "string")
+    src = double(source);
+    if(nargin < 2)
+        alpha = unique(src);
+    end
+     alpha = double(alpha);
+  else
+    [src,~,type] = getSource(source);
     if (nargin <= 2)
         
-      if (nargin == 1 || alpha == "group")
-            alpha = getAlphabet(src,type,file);
+      if (nargin == 1)
+            alpha = getAlphabet(src,type,source);
       end
       src = double(src); 
       alpha = double(alpha);
@@ -31,12 +38,12 @@ function e = entropy(file,alpha,varargin)
         src = double(src);
     	 [src,alpha] = createGroupings(src,type,grouping);    
     end
-
+  end
     data = categorical(src, alpha);
     freq = histcounts(data);
 
     prob = freq / sum(freq);
 
     e = (-prob(prob ~= 0) * log2(prob(prob ~= 0)')) / grouping;
-    
+ 
 end
