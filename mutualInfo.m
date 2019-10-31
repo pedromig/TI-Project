@@ -15,9 +15,9 @@ function j_entropy = jointEntropyCalc(query,target)
     
     newSource = double((target * pow2(8) + query));
     alpha = unique(newSource);
+    alpha = [alpha alpha(end)+1];
       
-    data = categorical(newSource,alpha);
-    freq = histcounts(data);
+    freq = histcounts(newSource,alpha);
    
     prob = freq/sum(freq);
     j_entropy =  sum(-prob(prob ~= 0).*log2(prob(prob ~= 0)));

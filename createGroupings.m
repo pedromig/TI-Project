@@ -8,18 +8,9 @@ function [newSource,alpha] = createGroupings(src,type,grouping)
         if ( mod(size(src,2),2) ~= 0)
             
             src = src(:,1:end-1);
-            row = zeros(1,size(src,1)* size(src,2));
-            k = 1;
-            for i = 1 : size(src,1)
-                   for j = 1 : size(src,2) 
-                       row(1,k) = src(i,j);
-                       k = k +1;
-                   end
-            end
-            src = row;
+            src = src(:)';
         end
     end
-    
         odd_pos = src(1:grouping:end-1);
         even_pos = src(2:grouping:end);
 

@@ -1,14 +1,14 @@
-query = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/query.bmp";
+query = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/query.bmp";
 %###################################################################################
-target1 = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target1.bmp";
-target2 = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target2.bmp";
-target3 = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target3.bmp";
-target4 = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target4.bmp";
+target1 = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target1.bmp";
+target2 = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target2.bmp";
+target3 = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target3.bmp";
+target4 = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target4.bmp";
 %###################################################################################
-target_inverted = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target_inverted.bmp";
-target_lightning_contrast= "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target_lightning_contrast.bmp";
-target_noise = "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target_noise.bmp";
-target_original =  "/home/pedro/Documents/MATLAB/PL1/data/mi_data/target_original.bmp";
+target_inverted = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target_inverted.bmp";
+target_lightning_contrast= "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target_lightning_contrast.bmp";
+target_noise = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target_noise.bmp";
+target_original =  "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target_original.bmp";
 %###################################################################################
 
 %Clear console
@@ -19,12 +19,6 @@ clc
 query = imread(query);
 [query_width, query_height] = size(query);
 step = 15;
-
-q = imread(target_inverted);
-if exist("mutual_1","var") == 0
-    mutual_1 = imgMutualInformation(query,qur,step);
-    [max_1,line_1,column_1] = maxMutualInfo(mutual_1,step);
-end
 
 %############# target_inverted #################
 
