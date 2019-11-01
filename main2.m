@@ -105,37 +105,55 @@ fprintf("Target4: \nmutualMax = %f\nvariance = %f\n (x,y) = (%d,%d)\n\n",max4,va
 %########### Draw rectangle and display image ################
 
 figure(1);
+imshow(query);
+title("query.bmp");
+
+figure(2); 
+
+subplot(2,2,1);
 imshow(targ1);
 rectangle("Position",[ line1 column1 query_width query_height],"LineWidth",2,"LineStyle","--","EdgeColor","r");
+title("target1.bmp");
 
-figure(2);
+
+subplot(2,2,2);
 imshow(targ2);
 rectangle("Position",[line2 column2 query_width query_height],"LineWidth",2,"LineStyle","--","EdgeColor","r");
+title("target2bmp");
 
 
-figure(3);
+subplot(2,2,3);
 imshow(targ3);
 rectangle("Position",[line3 column3 query_width query_height],"LineWidth",2,"LineStyle","--","EdgeColor","r");
+title("target3.bmp");
 
-
-figure(4);
+subplot(2,2,4);
 imshow(targ4);
 rectangle("Position",[line4 column4 query_width query_height],"LineWidth",2,"LineStyle","--","EdgeColor","r");
+title("target4.bmp");
 
-figure(5);
+figure(3);
+
+subplot(2,2,1);
 imshow(targ_1);
 rectangle("Position",[line_1 column_1 query_width query_height],"LineWidth",2,"LineStyle","--","EdgeColor","r");
+title("target inverted.bmp");
 
-figure(6);
+
+subplot(2,2,2);
 imshow(targ_2);
 rectangle("Position",[line_1 column_1 query_width query_height],"LineWidth",2,"LineStyle","--","EdgeColor","r");
+title("target lightning contrast.bmp");
 
-figure(7);
+
+subplot(2,2,3);
 imshow(targ_3);
 rectangle("Position",[line_1 column_1 query_width query_height],"LineWidth",2,"LineStyle","--","EdgeColor","r");
+title("target noise.bmp");
 
-figure(8);
+
+subplot(2,2,4);
 imshow(targ_4);
 rectangle("Position",[line_1 column_1 query_width query_height],"LineWidth",2,"LineStyle","--","EdgeColor","r");
-
+title("target original.bmp");
 

@@ -34,5 +34,4 @@ function [avg,var] =  HufflenStatistic(file,alpha)
     avg = Hlen * prob';
     avg_squared =  (Hlen.^2) * prob';
     var = (avg_squared - avg^2);
-
 end   
