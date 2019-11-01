@@ -1,10 +1,9 @@
 function e = entropy(source,alpha,varargin)
-
   %===========================================================================================
   % Name:  entropy
   %
   % Input arguments :
-  %                    #  file -> Symbol source file
+  %                    #  file -> Symbol source file(our double type source)
   %                    #  alpha -> Alphabet (optional argument) that we
   %                                that we will use to base our entropy calculation
   % Description :
@@ -17,13 +16,18 @@ function e = entropy(source,alpha,varargin)
   %===========================================================================================
 
   grouping = 1;
+
+  % If source type is a double matrix
   if (class(source) ~= "string")
+
     src = double(source);
     if(nargin < 2)
         alpha = unique(src);
     end
      alpha = double(alpha);
+
   else
+
     [src,~,type] = getSource(source);
     if (nargin <= 2)
         
@@ -39,6 +43,7 @@ function e = entropy(source,alpha,varargin)
     	 [src,alpha] = createGroupings(src,type,grouping);    
     end
   end
+  
     data = categorical(src, alpha);
     freq = histcounts(data);
 

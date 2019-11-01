@@ -6,18 +6,6 @@ audio = "/home/pedro/Documents/MATLAB/TI-Project/data/soundMono.wav";
 MRI =  "/home/pedro/Documents/MATLAB/TI-Project/data/MRI.bmp";
 MRIbin =  "/home/pedro/Documents/MATLAB/TI-Project/data/MRIbin.bmp";
 %###################################################################################
-query = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/query.bmp";
-%###################################################################################
-target1 = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target1.bmp";
-target2 = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target2.bmp";
-target3 = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target3.bmp";
-target4 = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target4.bmp";
-%###################################################################################
-target_inverted = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target_inverted.bmp";
-target_lightning_contrast= "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target_lightning_contrast.bmp";
-target3_noise = "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target_noise.bmp";
-target4_original =  "/home/pedro/Documents/MATLAB/TI-Project/data/mi_data/target_original.bmp";
-%###################################################################################
 
 %Clear the console
 clc 
